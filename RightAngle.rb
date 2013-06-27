@@ -1,7 +1,14 @@
 #!/usr/bin/ruby
 
 
-
+#Small script used to calculate thumb height so that all thumbs on 
+#same line hold aspect ration but fill up hole area, like google have on image search.
+# I got various height of thumbs so first give them desired height,
+# then loop  over the thumb doing addition of calculated width untill reach approximately allowed width 
+# then I have same height and approx allowed width.
+# then calculate angle for hole block 
+# then we calculate height for allowed width with given angle
+# when got it just set it up for thumbs in line, width set to auto, and that is it. 
 class Shape
 
 
@@ -46,12 +53,9 @@ class RightTriangle < Shape
 		return 90 - Math.atan2(elements_width, RightTriangle::DESIRED_HEIGHT) * ( 180 / Math::PI )
 	end	
 
-
 	def calculate_shared_height(elements_width)
   		return Math.tan((self.calculate_shared_bottom_angle(elements_width) * 2 * 3.14)/360) * RightTriangle::ALLOWED_WIDTH;
 	end	
-
-
 
 end
 
